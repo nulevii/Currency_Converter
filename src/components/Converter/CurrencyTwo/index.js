@@ -5,31 +5,32 @@ import { filterNumbers } from '../../../utilities/filterNumbers';
 import { selectCurrencyRate } from '../../../utilities/selectCurrencyRate';
 import { convert } from '../../../utilities/convert';
 
-function CurrencyOne({
+function CurrencyTwo({
   currencyRates,
-  setFirstCurrency,
-  setSelectedCurrencyRate1,
+  setSecondCurrency,
+  setSelectedCurrencyRate2,
   setFirstCurrencyAmount,
   setSecondCurrencyAmount,
   operation,
   selectedCurrencyRate2,
   selectedCurrencyRate1,
   firstCurrencyAmount,
+  secondCurrencyAmount,
 }) {
   return (
     <>
       <select
         className={styles.currency}
         onChange={(e) => {
-          setFirstCurrency(e.target.value);
-          setSelectedCurrencyRate1(
+          setSecondCurrency(e.target.value);
+          setSelectedCurrencyRate2(
             selectCurrencyRate(e.target.value, operation, currencyRates),
           );
           setSecondCurrencyAmount(
             convert(
               firstCurrencyAmount,
-              selectedCurrencyRate2,
               selectCurrencyRate(e.target.value, operation, currencyRates),
+              selectedCurrencyRate1,
             ),
           );
         }}
@@ -38,37 +39,31 @@ function CurrencyOne({
           if (ccy === 'BTC') {
             return;
           }
-          return (
-            <option key={ccy} value={ccy}>
-              {ccy}
-            </option>
-          );
+          return <option key={ccy} value={ccy}>{ccy}</option>;
         })}
-        <option key="UAH" value="UAH">
-          UAH
-        </option>
+        <option key="UAH" value="UAH">UAH</option>
       </select>
       <div className={styles['input-wrapper']}>
-        <p className={styles['converter-info']}>You will pay</p>
+        <p className={styles['converter-info']}>You will receive</p>
         <input
           className={styles['currency-input']}
           inputMode="numeric"
           onKeyPress={(event) => filterNumbers(event)}
           onChange={(e) => {
-            setFirstCurrencyAmount(e.target.value);
-            setSecondCurrencyAmount(
+            setSecondCurrencyAmount(e.target.value);
+            setFirstCurrencyAmount(
               convert(
                 e.target.value,
-                selectedCurrencyRate2,
                 selectedCurrencyRate1,
+                selectedCurrencyRate2,
               ),
             );
           }}
-          value={firstCurrencyAmount}
+          value={secondCurrencyAmount}
         />
       </div>
     </>
   );
 }
 
-export default CurrencyOne;
+export default CurrencyTwo;
