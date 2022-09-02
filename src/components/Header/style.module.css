@@ -1,0 +1,83 @@
+
+.header{
+  background-color: #759242;
+  background-image: url(./header-background.jpg);
+  background-size: 450px ;
+  border: 3px solid #759242;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  cursor: default;
+  display: flex;
+  justify-content: space-around;
+}
+.header-wrapper{
+  max-width: 1200px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+  color: #f2f2ef;
+
+}
+
+.logo-sign, .main-currencies{
+  background-color: #759242;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.logo-sign{
+  max-width: 10rem;
+}
+
+.main-currencies{
+background-color: #759242;
+display: flex;
+flex-direction: column;
+margin: 1rem;
+margin-right: 0;
+
+cursor: default;
+width: 23rem;
+}
+
+.main-currencies:hover{
+background-color: #f2f2ef;
+color: #759242;
+transition: all 0.5s;
+}
+
+.currency{
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.currency-logo{
+  font-size: 2rem;
+}
+
+.currency-name{
+  margin-right: auto;
+  margin-left: 0.1rem;
+}
+
+.currency-value{
+  margin-left: auto;
+
+  margin: 0;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+ @media screen and (max-width: 1000px) {
+.logo-sign{
+  display: none;
+}
+.main-currencies{
+  flex-grow: 1;
+  margin: 1rem;
+}
+
+ }
